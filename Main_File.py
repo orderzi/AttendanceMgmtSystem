@@ -6,29 +6,33 @@ def create_dataframe():
     df = pd.DataFrame(columns=columns)
     return df
 
-def welcome_page(df):
+def welcome_page():
     action = int(input('Welcome to Attendance Management System ! :\n'
           '1. Add Employee Manually\n'
           '2. Add Employee from a file\n'))
+    return action
+
+
+def choose_action(action):
     if action == 1:
-        add_user_man(df)
+        pass
     elif action == 2:
         pass
 
-def add_user_man(df):
-    user = {}
-    user['Employee_id'] = input('Please enter your Employee ID:')
-    user['Name'] = input('Please enter your Name:')
-    user['Phone'] = input('Please enter your Phone:')
-    user['Age'] = int(input('Please enter your Age:'))
-    df = df.append(user, ignore_index=True)
-    print(df)
-    return df
+def add_emp_man(df):
+    emp = Employee(employee_id=int(input('Please enter your Employee_ID'))
+                   ,name=str(input('Please enter your name')),
+                   phone=input('Please enter your Phone number:'),
+                   age=int(input('Please enter your age:')))
+    emp = emp.add_emp_man(df)
+    print(emp)
+    return emp
 
 
 df = create_dataframe()
-welcome = welcome_page(df)
 
+welcome = welcome_page()
+a = add_emp_man(df)
 
 
 
